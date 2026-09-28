@@ -1,0 +1,910 @@
+:root {
+    --night: #081426;
+    --night-light: #0d1c32;
+    --surface: #10213a;
+    --surface-light: #142842;
+
+    --ivory: #f3efe4;
+    --muted: #8e9aae;
+
+    --gold: #c8b47b;
+    --gold-soft: #ddcda2;
+
+    --moon: #eee9d9;
+
+    --line: rgba(210, 220, 235, 0.12);
+    --line-strong: rgba(210, 220, 235, 0.2);
+}
+
+
+/* -----------------------------
+   RESET
+----------------------------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background: var(--night);
+    color: var(--ivory);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow: hidden;
+}
+
+
+/* -----------------------------
+   PAGE
+----------------------------- */
+
+.page-shell {
+    width: min(1380px, 100%);
+    height: 100vh;
+
+    margin: auto;
+
+    padding: 0 54px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* -----------------------------
+   HEADER
+----------------------------- */
+
+.header {
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2.5px;
+}
+
+.brand-symbol {
+    color: var(--gold);
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.header-date {
+    color: var(--muted);
+
+    font-size: 9px;
+    letter-spacing: 1.8px;
+}
+
+
+/* -----------------------------
+   MAIN
+----------------------------- */
+
+.main-layout {
+    flex: 1;
+
+    min-height: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.45fr)
+        minmax(330px, 0.75fr);
+
+    gap: 38px;
+
+    padding: 30px 0 22px;
+}
+
+
+/* -----------------------------
+   LEFT PANEL
+----------------------------- */
+
+.moon-panel {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+}
+
+.intro {
+    max-width: 530px;
+}
+
+.eyebrow {
+    color: var(--gold);
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 2.4px;
+}
+
+.intro h1 {
+    margin-top: 11px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-weight: normal;
+
+    font-size: clamp(26px, 2.5vw, 37px);
+
+    line-height: 1.12;
+
+    letter-spacing: -0.5px;
+}
+
+.intro h1 em {
+    display: block;
+
+    color: #aab4c4;
+
+    font-style: italic;
+}
+
+
+/* -----------------------------
+   MOON DISPLAY
+----------------------------- */
+
+.moon-display {
+    flex: 1;
+
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    padding: 5px 0 15px;
+}
+
+.moon-halo {
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(200, 180, 123, 0.08);
+
+    box-shadow:
+        0 0 80px rgba(120, 150, 190, 0.05);
+}
+
+.moon {
+    width: 148px;
+    height: 148px;
+
+    border-radius: 50%;
+
+    position: relative;
+    z-index: 2;
+
+    background: var(--moon);
+
+    box-shadow:
+        0 0 35px rgba(238, 233, 217, 0.08);
+
+    transition:
+        background 0.35s ease,
+        transform 0.35s ease;
+}
+
+.moon::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 32% 32%,
+            rgba(80, 76, 68, 0.10) 0 6%,
+            transparent 7%
+        ),
+        radial-gradient(
+            circle at 65% 52%,
+            rgba(80, 76, 68, 0.08) 0 9%,
+            transparent 10%
+        ),
+        radial-gradient(
+            circle at 43% 72%,
+            rgba(80, 76, 68, 0.07) 0 5%,
+            transparent 6%
+        );
+}
+
+
+/* Moon phases */
+
+.moon-new {
+    background: #101a29;
+}
+
+.moon-waxing-crescent {
+    background:
+        radial-gradient(
+            circle at 69% 50%,
+            #101a29 0 43%,
+            transparent 44%
+        ),
+        var(--moon);
+}
+
+.moon-first-quarter {
+    background:
+        linear-gradient(
+            to right,
+            var(--moon) 0 50%,
+            #101a29 50% 100%
+        );
+}
+
+.moon-waxing-gibbous {
+    background:
+        radial-gradient(
+            circle at 31% 50%,
+            #101a29 0 36%,
+            transparent 37%
+        ),
+        var(--moon);
+}
+
+.moon-full {
+    background: var(--moon);
+}
+
+.moon-waning-gibbous {
+    background:
+        radial-gradient(
+            circle at 69% 50%,
+            #101a29 0 36%,
+            transparent 37%
+        ),
+        var(--moon);
+}
+
+.moon-last-quarter {
+    background:
+        linear-gradient(
+            to right,
+            #101a29 0 50%,
+            var(--moon) 50% 100%
+        );
+}
+
+.moon-waning-crescent {
+    background:
+        radial-gradient(
+            circle at 31% 50%,
+            #101a29 0 43%,
+            transparent 44%
+        ),
+        var(--moon);
+}
+
+
+/* -----------------------------
+   PHASE INFO
+----------------------------- */
+
+.phase-info {
+    text-align: center;
+
+    margin-top: 20px;
+
+    position: relative;
+    z-index: 3;
+}
+
+.phase-number {
+    color: var(--gold);
+
+    font-size: 8px;
+    letter-spacing: 2px;
+}
+
+.phase-info h2 {
+    margin-top: 5px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-weight: normal;
+
+    font-size: 20px;
+}
+
+.phase-info p {
+    color: var(--muted);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 12px;
+
+    margin-top: 4px;
+}
+
+
+/* -----------------------------
+   SECTION LABEL
+----------------------------- */
+
+.section-label {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    color: var(--muted);
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.label-line {
+    height: 1px;
+
+    background: var(--line);
+
+    flex: 1;
+}
+
+
+/* -----------------------------
+   PHASE SELECTOR
+----------------------------- */
+
+.phase-area {
+    margin-top: auto;
+}
+
+.phase-area > .section-label {
+    margin-bottom: 10px;
+}
+
+.phase-selector {
+    display: grid;
+
+    grid-template-columns: repeat(8, 1fr);
+
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.phase-option {
+    min-width: 0;
+
+    border: none;
+    border-right: 1px solid var(--line);
+
+    background: transparent;
+
+    color: var(--muted);
+
+    padding: 9px 3px 8px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.phase-option:last-child {
+    border-right: none;
+}
+
+.phase-option:hover {
+    background: rgba(255, 255, 255, 0.025);
+    color: var(--ivory);
+}
+
+.phase-option.selected {
+    background: rgba(200, 180, 123, 0.08);
+    color: var(--ivory);
+}
+
+.phase-option .moon {
+    width: 25px;
+    height: 25px;
+
+    margin: 0 auto 5px;
+
+    box-shadow: none;
+}
+
+.phase-label {
+    font-size: 7px;
+    line-height: 1.2;
+}
+
+
+/* -----------------------------
+   JOURNAL PANEL
+----------------------------- */
+
+.journal-panel {
+    background: var(--surface);
+
+    border: 1px solid var(--line-strong);
+
+    padding: 30px;
+
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.journal-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.journal-top h2 {
+    margin-top: 9px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 27px;
+
+    font-weight: normal;
+
+    line-height: 1.12;
+}
+
+.moon-mark {
+    color: var(--gold);
+
+    font-size: 13px;
+}
+
+
+/* -----------------------------
+   FORM
+----------------------------- */
+
+#journalForm {
+    flex: 1;
+
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 24px;
+}
+
+textarea {
+    flex: 1;
+
+    min-height: 120px;
+
+    width: 100%;
+
+    resize: none;
+
+    border: 1px solid var(--line-strong);
+
+    background: rgba(4, 12, 24, 0.28);
+
+    color: var(--ivory);
+
+    padding: 17px;
+
+    outline: none;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+textarea::placeholder {
+    color: #68758a;
+}
+
+textarea:focus {
+    border-color: rgba(200, 180, 123, 0.55);
+
+    background: rgba(4, 12, 24, 0.4);
+}
+
+
+/* -----------------------------
+   MOODS
+----------------------------- */
+
+.mood-block {
+    margin-top: 20px;
+}
+
+.section-label.small {
+    margin-bottom: 10px;
+}
+
+.mood-selector {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 5px;
+}
+
+.mood-button {
+    background: transparent;
+
+    color: var(--muted);
+
+    border: 1px solid var(--line-strong);
+
+    padding: 7px 10px;
+
+    font-size: 9px;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.mood-button:hover {
+    color: var(--ivory);
+}
+
+.mood-button.selected {
+    color: var(--ivory);
+
+    border-color: var(--gold);
+
+    background: rgba(200, 180, 123, 0.08);
+}
+
+
+/* -----------------------------
+   FORM FOOTER
+----------------------------- */
+
+.form-footer {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-top: 20px;
+}
+
+.save-message {
+    color: var(--gold);
+
+    font-size: 9px;
+}
+
+.save-button {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    border: none;
+
+    background: var(--gold);
+
+    color: #091321;
+
+    padding: 11px 16px;
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.save-button span {
+    font-size: 13px;
+}
+
+.save-button:hover {
+    background: var(--gold-soft);
+}
+
+.save-button:active {
+    transform: translateY(1px);
+}
+
+
+/* -----------------------------
+   RECENT NOTES
+----------------------------- */
+
+.recent-section {
+    flex-shrink: 0;
+
+    border-top: 1px solid var(--line);
+
+    padding: 14px 0 12px;
+}
+
+.recent-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 8px;
+}
+
+.recent-heading .section-label {
+    flex: 1;
+}
+
+.entry-count {
+    color: #66748a;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+.entries-container {
+    min-height: 42px;
+
+    max-height: 50px;
+
+    overflow: hidden;
+}
+
+.empty-message {
+    color: #65738a;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 11px;
+
+    padding: 3px 0;
+}
+
+.entry {
+    display: grid;
+
+    grid-template-columns: 95px 1fr auto;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 6px 0;
+
+    border-bottom: 1px solid rgba(210, 220, 235, 0.07);
+}
+
+.entry-date {
+    color: var(--muted);
+
+    font-size: 8px;
+
+    letter-spacing: 0.8px;
+}
+
+.entry-content {
+    min-width: 0;
+}
+
+.entry-meta {
+    color: var(--gold);
+
+    font-size: 8px;
+
+    letter-spacing: 0.7px;
+}
+
+.entry-text {
+    color: #b5becd;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.delete-entry {
+    background: transparent;
+
+    border: none;
+
+    color: #65738a;
+
+    font-size: 8px;
+
+    cursor: pointer;
+}
+
+.delete-entry:hover {
+    color: var(--ivory);
+}
+
+
+/* -----------------------------
+   FOOTER
+----------------------------- */
+
+.footer {
+    height: 35px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-top: 1px solid var(--line);
+
+    color: #5d6a7e;
+
+    font-size: 7px;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* -----------------------------
+   RESPONSIVE
+----------------------------- */
+
+@media (max-width: 900px) {
+
+    body {
+        overflow: auto;
+    }
+
+    .page-shell {
+        height: auto;
+
+        min-height: 100vh;
+
+        padding: 0 25px;
+    }
+
+    .main-layout {
+        grid-template-columns: 1fr;
+
+        flex: none;
+    }
+
+    .moon-display {
+        min-height: 330px;
+    }
+
+    .journal-panel {
+        min-height: 480px;
+    }
+
+    .entries-container {
+        max-height: none;
+    }
+}
+
+
+@media (max-width: 560px) {
+
+    .page-shell {
+        padding: 0 17px;
+    }
+
+    .header {
+        height: 60px;
+    }
+
+    .intro h1 {
+        font-size: 28px;
+    }
+
+    .phase-selector {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .phase-option:nth-child(4) {
+        border-right: none;
+    }
+
+    .journal-panel {
+        padding: 22px;
+    }
+
+    .entry {
+        grid-template-columns: 1fr auto;
+    }
+
+    .entry-date {
+        grid-column: 1 / -1;
+    }
+
+    .footer {
+        padding-bottom: 15px;
+    }
+}

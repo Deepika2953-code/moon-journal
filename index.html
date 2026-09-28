@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Moon Journal</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="page-shell">
+
+        <!-- Header -->
+        <header class="header">
+
+            <div class="brand">
+                <span class="brand-symbol">☾</span>
+                <span>MOON JOURNAL</span>
+            </div>
+
+            <div class="header-date" id="currentDate"></div>
+
+        </header>
+
+
+        <!-- Main Content -->
+        <main class="main-layout">
+
+            <!-- Left / Main Visual -->
+            <section class="moon-panel">
+
+                <div class="intro">
+                    <span class="eyebrow">A PERSONAL NIGHT LOG</span>
+
+                    <h1>
+                        A quiet place for thoughts
+                        <em>beneath changing skies.</em>
+                    </h1>
+                </div>
+
+
+                <div class="moon-display">
+
+                    <div class="moon-halo"></div>
+
+                    <div id="mainMoon" class="moon moon-waxing-gibbous"></div>
+
+                    <div class="phase-info">
+
+                        <span class="phase-number" id="phaseNumber">
+                            04 / 08
+                        </span>
+
+                        <h2 id="phaseName">
+                            Waxing Gibbous
+                        </h2>
+
+                        <p id="phaseDescription">
+                            A little more light than yesterday.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Phase Selector -->
+                <div class="phase-area">
+
+                    <div class="section-label">
+                        <span>MOON PHASE</span>
+                        <span class="label-line"></span>
+                    </div>
+
+                    <div id="phaseSelector" class="phase-selector"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Right / Journal -->
+            <aside class="journal-panel">
+
+                <div class="journal-top">
+
+                    <div>
+                        <span class="eyebrow">TONIGHT'S REFLECTION</span>
+
+                        <h2>What stayed<br>on your mind?</h2>
+                    </div>
+
+                    <span class="moon-mark">✦</span>
+
+                </div>
+
+
+                <form id="journalForm">
+
+                    <textarea
+                        id="journalText"
+                        placeholder="Write a few words..."
+                        maxlength="1000"
+                        aria-label="Journal entry"
+                    ></textarea>
+
+
+                    <div class="mood-block">
+
+                        <div class="section-label small">
+                            <span>MOOD</span>
+                            <span class="label-line"></span>
+                        </div>
+
+                        <div class="mood-selector">
+
+                            <button type="button"
+                                    class="mood-button"
+                                    data-mood="Quiet">
+                                Quiet
+                            </button>
+
+                            <button type="button"
+                                    class="mood-button"
+                                    data-mood="Hopeful">
+                                Hopeful
+                            </button>
+
+                            <button type="button"
+                                    class="mood-button"
+                                    data-mood="Tired">
+                                Tired
+                            </button>
+
+                            <button type="button"
+                                    class="mood-button"
+                                    data-mood="Restless">
+                                Restless
+                            </button>
+
+                            <button type="button"
+                                    class="mood-button"
+                                    data-mood="Grateful">
+                                Grateful
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-footer">
+
+                        <span id="saveMessage" class="save-message"></span>
+
+                        <button type="submit" class="save-button">
+                            SAVE ENTRY
+                            <span>→</span>
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </aside>
+
+        </main>
+
+
+        <!-- Recent Entries -->
+        <section class="recent-section">
+
+            <div class="recent-heading">
+
+                <div class="section-label">
+                    <span>RECENT NOTES</span>
+                    <span class="label-line"></span>
+                </div>
+
+                <span class="entry-count" id="entryCount">
+                    0 ENTRIES
+                </span>
+
+            </div>
+
+
+            <div id="entriesContainer" class="entries-container"></div>
+
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+
+            <span>MOON JOURNAL</span>
+
+            <span>
+                Take a moment. Look up.
+            </span>
+
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
