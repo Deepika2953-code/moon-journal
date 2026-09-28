@@ -908,3 +908,19 @@ textarea:focus {
         padding-bottom: 15px;
     }
 }
+
+.student-details {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.student-details span:first-child {
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.student-details span:last-child {
+    color: #7d899b;
+    letter-spacing: 0.8px;
+}
